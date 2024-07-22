@@ -1,0 +1,31 @@
+require("dotenv").config(); // Tambahkan ini untuk memuat variabel lingkungan
+
+const { Sequelize } = require("sequelize");
+
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
+  }
+);
+
+const User = require("./user")(sequelize);
+const Content = require("./content")(sequelize);
+const Visimisi = require("./visimisi")(sequelize);
+const News = require("./news")(sequelize);
+
+User.hasMany(Content, { foreignKey: "userId" });
+Content.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(Visimisi, { foreignKey: "userId" });
+Visimisi.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(News, { foreignKey: "userId" });
+News.belongsTo(User, { foreignKey: "userId" });
+
+sequelize.sync({ alter: true });
+
+module.exports = { sequelize, User, Content, Visimisi, News };
