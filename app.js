@@ -6,10 +6,10 @@ const authRoutes = require("./routes/auth");
 const contentRoutes = require("./routes/content");
 const visimisiRoutes = require("./routes/visimisi");
 const newsRoutes = require("./routes/news");
+const cors = require("cors");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-
 var app = express();
 
 app.use(logger("dev"));
@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors()); 
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
