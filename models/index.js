@@ -9,6 +9,9 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
+    define: {
+      freezeTableName: true,
+    },
   }
 );
 
@@ -16,6 +19,7 @@ const User = require("./user")(sequelize);
 const Content = require("./content")(sequelize);
 const Visimisi = require("./visimisi")(sequelize);
 const News = require("./news")(sequelize);
+const Profile = require("./profile")(sequelize);
 
 User.hasMany(Content, { foreignKey: "userId" });
 Content.belongsTo(User, { foreignKey: "userId" });
@@ -26,6 +30,9 @@ Visimisi.belongsTo(User, { foreignKey: "userId" });
 User.hasMany(News, { foreignKey: "userId" });
 News.belongsTo(User, { foreignKey: "userId" });
 
+User.hasMany(Profile, { foreignKey: "userId" });
+Profile.belongsTo(User, { foreignKey: "userId" });
+
 sequelize.sync({ alter: true });
 
-module.exports = { sequelize, User, Content, Visimisi, News };
+module.exports = { sequelize, User, Content, Visimisi, News, Profile };
