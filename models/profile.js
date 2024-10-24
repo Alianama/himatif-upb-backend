@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  const Profil = sequelize.define("Profil", {
+  const Profile = sequelize.define("Profile", {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -20,5 +20,5 @@ module.exports = (sequelize) => {
     },
   });
 
-  return Profil;
+  return Profile;
 };
