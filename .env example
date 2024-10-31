@@ -3,3 +3,5 @@
    DB_PASSWORD=
    DB_HOST=localhost
    DB_DIALECT=mysql
+   EMAIL_USER=youremail@gmail.com
+   EMAIL_PASS=yourpassword

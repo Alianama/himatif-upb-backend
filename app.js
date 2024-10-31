@@ -8,6 +8,7 @@ const visimisiRoutes = require("./routes/visimisi");
 const newsRoutes = require("./routes/news");
 const profileRoutes = require("./routes/profile");
 const historyRoutes = require("./routes/history");
+const emailRoutes = require("./routes/mail");
 const cors = require("cors");
 
 var indexRouter = require("./routes/index");
@@ -31,5 +32,6 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/profile", profileRoutes);
 app.use("/history", historyRoutes);
+app.use("/email", emailRoutes);
 
 module.exports = app;
