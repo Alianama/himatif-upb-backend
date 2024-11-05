@@ -6,7 +6,7 @@ const sendEmail = async (req, res) => {
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: "alipurnama72@gmail.com",
+    to: process.env.EMAIL_ADMIN,
     subject: encode(`Himatif Webiste Inquiry || ${subject}`),
     html: `
       <style>

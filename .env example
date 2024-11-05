@@ -5,3 +5,4 @@
    DB_DIALECT=mysql
    EMAIL_USER=youremail@gmail.com
    EMAIL_PASS=yourpassword
+   EMAIL_ADMIN=alipurnama72@gmail.com
