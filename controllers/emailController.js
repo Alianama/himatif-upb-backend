@@ -4,6 +4,25 @@ const { encode } = require("html-entities");
 const sendEmail = async (req, res) => {
   const { subject, name, phone, email, company, body } = req.body;
 
+  if (!subject) {
+    return res.status(400).json({ message: "Subject cannot be empty" });
+  }
+  if (!name) {
+    return res.status(400).json({ message: "Name cannot be empty" });
+  }
+  if (!phone) {
+    return res.status(400).json({ message: "Phone cannot be empty" });
+  }
+  if (!email) {
+    return res.status(400).json({ message: "Email cannot be empty" });
+  }
+  if (!company) {
+    return res.status(400).json({ message: "Company cannot be empty" });
+  }
+  if (!body) {
+    return res.status(400).json({ message: "Body cannot be empty" });
+  }
+
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_ADMIN,
