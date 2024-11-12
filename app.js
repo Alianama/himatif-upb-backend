@@ -9,6 +9,7 @@ const newsRoutes = require("./routes/news");
 const profileRoutes = require("./routes/profile");
 const historyRoutes = require("./routes/history");
 const emailRoutes = require("./routes/mail");
+const bannerRoutes = require("./routes/banner");
 const cors = require("cors");
 
 var indexRouter = require("./routes/index");
@@ -33,5 +34,6 @@ app.use("/users", usersRouter);
 app.use("/profile", profileRoutes);
 app.use("/history", historyRoutes);
 app.use("/email", emailRoutes);
+app.use("/banner", bannerRoutes);
 
 module.exports = app;
