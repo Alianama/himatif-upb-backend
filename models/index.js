@@ -22,6 +22,7 @@ const News = require("./news")(sequelize);
 const Profile = require("./profile")(sequelize);
 const History = require("./history")(sequelize);
 const Banner = require("./banner")(sequelize);
+const Departement = require("./departement")(sequelize);
 
 User.hasMany(Content, { foreignKey: "userId" });
 Content.belongsTo(User, { foreignKey: "userId" });
@@ -41,6 +42,9 @@ History.belongsTo(User, { foreignKey: "userId" });
 User.hasMany(Banner, { foreignKey: "userId" });
 History.belongsTo(User, { foreignKey: "userId" });
 
+User.hasMany(Departement, { foreignKey: "userId" });
+Departement.belongsTo(User, { foreignKey: "userId" });
+
 sequelize.sync({ alter: true });
 
 module.exports = {
@@ -52,4 +56,5 @@ module.exports = {
   Profile,
   History,
   Banner,
+  Departement,
 };
