@@ -11,6 +11,7 @@ const historyRoutes = require("./routes/history");
 const emailRoutes = require("./routes/mail");
 const bannerRoutes = require("./routes/banner");
 const departementRoutes = require("./routes/departement");
+const galeryRoutes = require("./routes/galery");
 
 const cors = require("cors");
 
@@ -38,5 +39,6 @@ app.use("/history", historyRoutes);
 app.use("/email", emailRoutes);
 app.use("/banner", bannerRoutes);
 app.use("/departement", departementRoutes);
+app.use("/galery", galeryRoutes);
 
 module.exports = app;
