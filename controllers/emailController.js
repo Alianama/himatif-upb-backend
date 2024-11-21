@@ -63,4 +63,50 @@ const sendEmail = async (req, res) => {
   }
 };
 
-module.exports = { sendEmail };
+const sendKritikSaran = async (req, res) => {
+  const { kritik, saran } = req.body;
+
+  if (!kritik) {
+    return res.status(400).json({ message: "Kritik cannot be empty" });
+  }
+  if (!saran) {
+    return res.status(400).json({ message: "Saran cannot be empty" });
+  }
+
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_ADMIN,
+    subject: encode(`kritik Dan Saran - Himatif Website`),
+    html: `
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+        }
+        .container {
+          max-width: 600px;
+          margin: auto;
+          padding: 20px;
+          background-color: #fff;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+      </style>
+      <div class="container">
+        <h2>Kritik dan Saran</h2>
+        <p>Kritik: ${encode(kritik)}</p>
+        <p>Saran: ${encode(saran)}</p>
+      </div>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Saran sent successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error sending email", error });
+  }
+};
+
+module.exports = { sendEmail, sendKritikSaran };
